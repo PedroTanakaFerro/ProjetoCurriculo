@@ -7,8 +7,7 @@
     <title>Pedro Tanaka Ferro</title>
 </head>
 <body>
-    <div id="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+    <nav id="sidebar">
         <a href="index.html">Início</a>
         <a href="#dados-pessoais">Dados Pessoais</a>
         <a href="#formacao">Formação</a>
@@ -16,47 +15,46 @@
         <a href="#habilidades">Habilidades</a>
         <a href="#experiencia">Experiência</a>
         <a href="#idiomas">Idiomas</a>
-    </div>
+    </nav>
 
     <div id="main">
-
         <header class="apresentacao">
+            <button id="openbtn" class="openbtn" onclick="toggleNav()"><img id="menuicon" src="imagens/icons-menu-s.png"></button>
             <h1>Currículo Pedro Tanaka</h1>
             <img src="#" alt="Foto Minha">
             <p>Meu nome é Pedro Tanaka, estou no último ano do curso Técnico em Programação de Jogos Digitais pelo Instituto Federal do Paraná (IFPR). Gosto de atuar no desenvolvimento de jogos digitais, e estou disposto a expandir minha experiência a áreas adjacentes. Minha produtividade é comprometida se o projeto não é organizado, e por isso prezo pela clareza nas contribuições da equipe.</p>
         </header>
-        <button id="openbtn" class="openbtn" onclick="openNav()"><img src="imagens/icons-menu-s.png"></button>
 
         <section id="dados-pessoais">
             <h2>Dados Pessoais</h2>
             <ul>
-                <li><b>Nome:</b> Pedro Tanaka Ferro</li>
-                <li><b>Data de Nascimento:</b> 04/12/2007<li>
-                <li><b>Email:</b> tanaka.pf07@gmail.com</li>
-                <li><b>Telefone:</b> (41) 98876-6960</li>
+                <li><b class="topic">Nome:</b> Pedro Tanaka Ferro</li>
+                <li><b class="topic">Data de Nascimento:</b> 04/12/2007</li>
+                <li><b class="topic">Email:</b> tanaka.pf07@gmail.com</li>
+                <li><b class="topic">Telefone:</b> (41) 98876-6960</li>
             </ul>
         </section>
 
         <section id="formacao">
             <h2>Formação</h2>
             <ul>
-                <li><b>Ensino Fundamental:</b> Escola Projeto 21 (7° ao 9° ano) (2019 - 2021)</li>
-                <li><b>Ensino Médio:</b> Técnico no curso de Programação de Jogos Digitais (4 anos) pelo Instituto Federal do Paraná (IFPR) (2023 - 2026)<li>
+                <li><b class="topic">Ensino Fundamental:</b> Escola Projeto 21 (7° ao 9° ano) (2019 - 2021)</li>
+                <li><b class="topic">Ensino Médio:</b> Técnico no curso de Programação de Jogos Digitais (4 anos) pelo Instituto Federal do Paraná (IFPR) (2023 - 2026)</li>
             </ul>
         </section>
         
         <section id="conhecimentos">
             <h2>Conhecimentos</h2>
             <ul>
-                <li><b>Linguagens:</b> C, C++, C#, Java, Javascript, HTML e CSS</li>
-                <li><b>Software:</b> Unity, Godot, Blender, Rhino, Inkscape, Cubase e FMOD</li>
-                <li><b>Áreas de Atuação:</b> Fullstack (preferência por Back-End)</li>
+                <li><b class="topic">Linguagens:</b> C, C++, C#, Java, Javascript, HTML e CSS</li>
+                <li><b class="topic">Software:</b> Unity, Godot, Blender, Rhino, Inkscape, Cubase e FMOD</li>
+                <li><b class="topic">Áreas de Atuação:</b> Fullstack (preferência por Back-End)</li>
             </ul>
         </section>
 
         <section id="habilidades">
             <h2>Habilidades</h2>
-            <ul>
+            <ul id="abilities">
                 <li>Organização</li>
                 <li>Adaptabilidade</li>
                 <li>Flexibilidade</li>
@@ -67,29 +65,53 @@
         <section id="experiencia">
             <h2>Experiência</h2>
             <ul>
-                <li><b>Projeto Meros:</b> Trabalho como voluntário por 3 anos (2024 - 2026) em um projeto do IFPR, em parceria com o Instituto Meros do Brasil. Desenvolvimento de um jogo em Realidade Virtual sobre um peixe ameaçado de extinção que está presente no litoral brasileiro. Realizei em grupo pesquisas sobre o peixe mero e seu habitat, e implementei a personagem em seu ambiente, visando representar fielmente a realidade.</li>
-                <li><b>Monitoria:</b> Auxílio a alunos com dificuldade de aprendizagem nas matérias de matemática e física no IFPR por um ano (2025). Inicialmente como voluntário, como bolsista nos últimos 3 meses.</li>
-                <li><b>Trabalho de Conclusão de Curso:</b> Reactor Rush é o meu TCC do curso de Programação de Jogos Digitais pelo IFPR e tem um ano de desenvolvimento (2026). O projeto, ainda em andamento, é um jogo que tem como tema a operação de uma usina nuclear, e tem como objetivo demonstrar os processos físicos envolvidos em uma experiência lúdica e divertida. O meu papel na equipe é de programador, além de ser o gerente do projeto.</li>
-                <li><b>Brunner:</b> Serviço prestado informalmente (2024) para a empresa Brunner, encomendado pela Nestlé. Realizei a modelagem do produto Chocobiscuit, usando o software Rhino.</li>
-                <li><b>Tetr.io Insiders:</b> Atuação contínua desde janeiro de 2026 como playtester voluntário do jogo tetr.io, que possui cerca de 10 milhões de usuários.</li>
+                <li>
+                    <details>
+                        <summary><b class="topic">Projeto Meros</b></summary>
+                        <p>Trabalho como voluntário por 3 anos (2024 - 2026) em um projeto do IFPR, em parceria com o Instituto Meros do Brasil. Desenvolvimento de um jogo em Realidade Virtual sobre um peixe ameaçado de extinção que está presente no litoral brasileiro. Realizei em grupo pesquisas sobre o peixe mero e seu habitat, e implementei a personagem em seu ambiente, visando representar fielmente a realidade.</p>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary><b class="topic">Monitoria</b></summary>
+                        <p>Auxílio a alunos com dificuldade de aprendizagem nas matérias de matemática e física no IFPR por um ano (2025). Inicialmente como voluntário, como bolsista nos últimos 3 meses.</p>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary><b class="topic">Trabalho de Conclusão de Curso</b></summary>
+                        <p>Reactor Rush é o meu TCC do curso de Programação de Jogos Digitais pelo IFPR e tem um ano de desenvolvimento (2026). O projeto, ainda em andamento, é um jogo que tem como tema a operação de uma usina nuclear, e tem como objetivo demonstrar os processos físicos envolvidos em uma experiência lúdica e divertida. O meu papel na equipe é de programador, além de ser o gerente do projeto.</p>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary><b class="topic">Brunner</b></summary>
+                        <p>Serviço prestado informalmente (2024) para a empresa Brunner, encomendado pela Nestlé. Realizei a modelagem do produto Chocobiscuit, usando o software Rhino.</p>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary><b class="topic">Tetr.io Insiders</b></summary>
+                        <p>Atuação contínua desde janeiro de 2026 como playtester voluntário do jogo tetr.io, que possui cerca de 10 milhões de usuários.</p>
+                    </details>
+                </li>
             </ul>
         </section>
 
         <section id="idiomas">
             <h2>Idiomas</h2>
             <ul>
-                <li><b>Português:</b> Nativo</li>
-                <li><b>Inglês:</b> Avançado</li>
-                <li><b>Espanhol:</b> Básico</li>
+                <li><b class="topic">Português:</b> Nativo</li>
+                <li><b class="topic">Inglês:</b> Avançado</li>
+                <li><b class="topic">Espanhol:</b> Básico</li>
             </ul>
         </section>
 
         <footer id="contato">
             <p>Telefone: (41) 98876-6960</p>
             <p>Email: tanaka.pf07@gmail.com</p>
-            <p>Endereço: Rua Exemplo, 123 - São Paulo/SP</p>
             <p><a href="https://github.com/PedroTanakaFerro"><img src="imagens/github-white-icon.png" alt="GitHub"></a></p>
-            <p>&copy; 2026 Pedro Tanaka Ferro Todos os direitos reservados.</p>
+            <p>&copy; 2026 Pedro Tanaka Ferro</p>
         </footer>
     </div>
 
