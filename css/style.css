@@ -71,6 +71,10 @@ article {
     margin: 20px 80px;
 }
 
+#foto {
+    border-radius: 125px;
+}
+
 .topic {
     color: #A624F3;
 }
