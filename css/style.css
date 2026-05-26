@@ -170,7 +170,7 @@ article {
 }
 
 .carousel-btn {
-    background-color: #4436F4;
+    background-color: #A624F3;
     color: white;
     border: none;
     font-size: 24px;
@@ -183,4 +183,64 @@ article {
 
 .carousel-btn:hover {
     background-color: #A624F3;
+}
+
+/* Estilização do Pop-up (Modal) */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 1000; /* Garante que vai ficar por cima de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo preto semi-transparente */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.modal-content p {
+    color: #333;
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: #A624F3; /* Muda para a cor roxa padrão do seu site ao passar o mouse */
+}
+
+/* Animação suave de abertura */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }

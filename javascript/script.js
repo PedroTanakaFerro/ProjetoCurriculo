@@ -41,3 +41,27 @@ function moveCarousel(direction) {
     var percentageToMove = currentIndex * (100 / 3);
     track.style.transform = "translateX(-" + percentageToMove + "%)";
 }
+
+// Funções para o Pop-up (Modal)
+function openModal(element) {
+    var modal = document.getElementById("projectModal");
+    var modalImg = document.getElementById("modalImg");
+    var modalText = document.getElementById("modalText");
+
+    modal.style.display = "flex"; // Exibe o modal usando flexbox para centralizar
+    modalImg.src = element.src;    // Copia o caminho da imagem clicada
+    modalText.innerText = element.getAttribute("data-desc"); // Copia o texto do atributo data-desc
+}
+
+function closeModal() {
+    var modal = document.getElementById("projectModal");
+    modal.style.display = "none"; // Esconde o modal
+}
+
+// Opcional: Fecha o modal se o usuário clicar fora da caixa branca
+window.onclick = function(event) {
+    var modal = document.getElementById("projectModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}

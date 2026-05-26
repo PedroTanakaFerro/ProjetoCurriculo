@@ -71,7 +71,7 @@
                 <li>
                     <details>
                         <summary><b class="topic">Reactor Rush — TCC (Gerente de Projeto & Programador)</b></summary>
-                        <p>Projeto de Conclusão de Curso em desenvolvimento desde 2026 pelo IFPR. Jogo educativo sobre operação de usina nuclear, com foco em representar processos físicos reais de forma lúdica. Atuo como programador principal e gerente do projeto, sendo responsável pela arquitetura do software, distribuição de tarefas e acompanhamento das entregas da equipe.</p>
+                        <p>Projeto de Conclusão de Curso em desenvolvimento desde 2026 pelo IFPR. Jogo educativo sobre operação de usina nuclear, com foco em representar processos físicos reais de forma lúdica. Atua como programador principal e gerente do projeto, sendo responsável pela arquitetura do software, distribuição de tarefas e acompanhamento das entregas da equipe.</p>
                     </details>
                 </li>
                 <li>
@@ -116,16 +116,24 @@
                 <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
                 <div class="carousel-wrapper">
                     <div class="carousel-track" id="carouselTrack">
-                        <div class="carousel-item"><img src="imagens/projeto1.png" alt="Projeto 1"></div>
-                        <div class="carousel-item"><img src="imagens/projeto2.png" alt="Projeto 2"></div>
-                        <div class="carousel-item"><img src="imagens/projeto3.png" alt="Projeto 3"></div>
-                        <div class="carousel-item"><img src="imagens/projeto4.png" alt="Projeto 4"></div>
-                        <div class="carousel-item"><img src="imagens/projeto5.png" alt="Projeto 5"></div>
+                        <div class="carousel-item"><img src="imagens/projeto1.png" alt="Projeto 1" data-desc="Ocultaria: Jogo de escape room, no qual o jogador deve resolver desafios para sair da sala enquanto tenta desvendar um caso de assassinato ocorrido no local." onclick="openModal(this)"></div>
+                        <div class="carousel-item"><img src="imagens/projeto2.png" alt="Projeto 2" data-desc="Casinha: Modelo em 3D de uma casa simples feito no blender na disciplina de design." onclick="openModal(this)"></div>
+                        <div class="carousel-item"><img src="imagens/projeto3.png" alt="Projeto 3" data-desc="Reactor Rush: Jogo como Trabalho de Conclusão de Curso (TCC), que se passa em uma usina nuclear que o jogador deve administrar, enquanto resolve problemas que comprometem o seu funcionamento e podem causar um desastre." onclick="openModal(this)"></div>
+                        <div class="carousel-item"><img src="imagens/projeto4.png" alt="Projeto 4" data-desc="The Last of Cheese: Jogo de plataforma 2D no qual o jogador é um rato que sai do esgoto e vai para a cidade em busca de queijos." onclick="openModal(this)"></div>
+                        <div class="carousel-item"><img src="imagens/projeto5.png" alt="Projeto 5" data-desc="Canhões: Jogo simples de terminal no qual dois jogadoes comptem tentando acertar o canhão do adversário em um terreno gerado aleatoriamente." onclick="openModal(this)"></div>
                     </div>
                 </div>
                 <button class="carousel-btn next-btn" onclick="moveCarousel(1)">&#10095;</button>
             </div>
         </section>
+
+        <div id="projectModal" class="modal">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                <img id="modalImg" src="" alt="Imagem Ampliada">
+                <p id="modalText"></p>
+            </div>
+        </div>
 
         <footer id="contato">
             <p>Telefone: (41) 98876-6960</p>
