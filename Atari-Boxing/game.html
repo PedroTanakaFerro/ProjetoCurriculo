@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atari Boxing (1980) - Site Oficial & Jogo Canvas</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" type="image/png" href="Img/Menu.png">
+</head>
+<body>
+
+    <!-- Faixa Arco-íris Clássica da Activision -->
+    <div class="activision-stripe"></div>
+
+    <!-- Barra de Navegação -->
+    <nav class="navbar">
+        <a href="#hero" class="nav-brand">
+            <span class="brand-badge">ACTIVISION</span>
+            <span class="brand-title">BOXING <span>1980</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#controles">🕹️ Controles</a></li>
+            <li><a href="#jogabilidade">📋 Jogabilidade</a></li>
+            <li><a href="#historia">🏛️ História</a></li>
+            <li><a href="#narrativa">📖 Narrativa</a></li>
+            <li><a href="#knockout-club">🏆 Knockout Club</a></li>
+            <li><a href="#arena">🥊 O Jogo</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="../index.html" class="btn-secondary">⬅ Voltar para o portifólio</a>
+            <a href="#arena" class="btn-play-now">JOGAR AGORA</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-tag">
+                <span>★</span> CARTUCHO AG-002 • ATARI 2600 VCS • 1980
+            </div>
+            <h1 class="hero-title">
+                ACTIVISION
+                <span>BOXING</span>
+            </h1>
+            <p class="hero-subtitle">
+                O lendário clássico de combate desenvolvido pelo mestre Bob Whitehead. 
+                Recriado integralmente na web através do elemento HTML5 Canvas com fidelidade pixel-art, 
+                visão aérea inovadora e a intensidade de 120 segundos ininterruptos de pura adrenalina no tablado.
+            </p>
+
+            <div class="hero-badges">
+                <div class="badge-item">🎮 Desenvolvedor: <strong>Bob Whitehead</strong></div>
+                <div class="badge-item">💾 Memória Original: <strong>128 Bytes RAM</strong></div>
+                <div class="badge-item">⏱️ Duração: <strong>2 Minutos</strong></div>
+                <div class="badge-item">👁️ Perspectiva: <strong>Top-Down (Aérea)</strong></div>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#arena" class="btn-primary">🥊 ENTRAR NO RINGUE</a>
+                <a href="#controles" class="btn-secondary">🕹️ Ver Controles</a>
+                <a href="#historia" class="btn-secondary">📜 Conhecer a História</a>
+            </div>
+        </div>
+
+        <div class="hero-art">
+            <div class="art-frame">
+                <img src="Img/Boxers.png" alt="Pugilistas de Atari Boxing em Combate" width="400">
+                <div class="art-caption">O Grande Duelo de 1980</div>
+                <div class="art-subcaption">Corner Branco vs Corner Preto sob os holofotes</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Elementos de Áudio do Jogo -->
+        <audio id="hit1Audio">
+            <source src="audio/hit1.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+        <audio id="hit2Audio">
+            <source src="audio/hit2.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+        <audio id="gameOverAudio">
+            <source src="audio/end.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+        <audio id="ambientAudio" autoplay>
+            <source src="audio/ambience.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+        <!-- ==========================================================================
+             SEÇÃO 1: INSTRUÇÕES DE CONTROLE
+             ========================================================================== -->
+        <section class="controls-section" id="controles">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">GUIA DE OPERAÇÃO DOS JOYSTICKS</span>
+                    <h2 class="section-title">Instruções de <span>Controle</span></h2>
+                    <p class="section-desc">
+                        Comandos detalhados para cada lutador no teclado. O sistema reproduz a movimentação omnidirecional 
+                        dos joysticks analógicos do Atari 2600 e o botão de disparo de soco com alternância anatômica de braços.
+                    </p>
+                </div>
+
+                <div class="controls-grid">
+                    <!-- Jogador 1 (Branco) -->
+                    <div class="control-card">
+                        <div class="control-header">
+                            <div class="control-player-title">Jogador 1</div>
+                            <span class="control-corner corner-white">Corner Branco</span>
+                        </div>
+
+                        <div class="keys-layout">
+                            <div class="keys-row">
+                                <span class="keycap">W</span>
+                            </div>
+                            <div class="keys-row">
+                                <span class="keycap">A</span>
+                                <span class="keycap">S</span>
+                                <span class="keycap">D</span>
+                            </div>
+                            <div class="action-label">Mover Boxeador (Cima, Esquerda, Baixo, Direita)</div>
+
+                            <div class="keys-row" style="margin-top: 1.5rem;">
+                                <span class="keycap key-space">ESPAÇO</span>
+                            </div>
+                            <div class="action-label">Desferir Soco / Jab</div>
+                        </div>
+
+                        <ul class="control-mechanic-list">
+                            <li><span class="bullet">▸</span> <strong>W / S:</strong> Movimenta verticalmente para cima ou para baixo pelo tablado.</li>
+                            <li><span class="bullet">▸</span> <strong>A / D:</strong> Avança e recua horizontalmente contra o adversário.</li>
+                            <li><span class="bullet">▸</span> <strong>Espaço:</strong> Dispara o golpe. O braço estica em direção à cabeça do oponente.</li>
+                            <li><span class="bullet">▸</span> <strong>Recuo:</strong> Ao soltar a tecla de soco, os braços retornam à posição de guarda.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Jogador 2 (Preto) -->
+                    <div class="control-card">
+                        <div class="control-header">
+                            <div class="control-player-title">Jogador 2</div>
+                            <span class="control-corner corner-black">Corner Preto</span>
+                        </div>
+
+                        <div class="keys-layout">
+                            <div class="keys-row">
+                                <span class="keycap">↑</span>
+                            </div>
+                            <div class="keys-row">
+                                <span class="keycap">←</span>
+                                <span class="keycap">↓</span>
+                                <span class="keycap">→</span>
+                            </div>
+                            <div class="action-label">Mover Boxeador (Setas Direcionais)</div>
+
+                            <div class="keys-row" style="margin-top: 1.5rem;">
+                                <span class="keycap key-enter">ENTER</span>
+                            </div>
+                            <div class="action-label">Desferir Soco / Jab</div>
+                        </div>
+
+                        <ul class="control-mechanic-list">
+                            <li><span class="bullet">▸</span> <strong>Setas Cima / Baixo:</strong> Desloca o pugilista verticalmente pelo ringue.</li>
+                            <li><span class="bullet">▸</span> <strong>Setas Esquerda / Direita:</strong> Aproximação e recuo estratégico.</li>
+                            <li><span class="bullet">▸</span> <strong>Enter:</strong> Desfere soco direto ou gancho no corpo a corpo.</li>
+                            <li><span class="bullet">▸</span> <strong>Alternância de Lado:</strong> Quando os lutadores cruzam de posição, os sprites giram automaticamente.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Banner de Dicas de Combate -->
+                <div class="tips-banner">
+                    <div class="tips-icon">🥊</div>
+                    <div class="tips-content">
+                        <h4>Mecânica Inteligente dos Punhos</h4>
+                        <p>
+                            O jogo seleciona automaticamente qual braço (esquerdo ou direito) desfere o golpe com base na posição relativa 
+                            entre a sua cabeça e a cabeça do adversário. Golpes desferidos a curta distância (menos de 80px) causam impacto 
+                            duplo e contabilizam <strong>2 pontos</strong> na contagem dos juízes!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SEÇÃO 2: DESCRIÇÃO DA JOGABILIDADE & REGRAS OFICIAIS
+             ========================================================================== -->
+        <section class="gameplay-section" id="jogabilidade">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">MANUAL DE REGRAS OFICIAIS</span>
+                    <h2 class="section-title">Descrição da <span>Jogabilidade</span></h2>
+                    <p class="section-desc">
+                        As regras fundamentais do clássico Boxing de 1980 da Activision. Entenda a dinâmica da luta, o sistema 
+                        de pontuação por distância e as condições de vitória que consagraram este marco esportivo.
+                    </p>
+                </div>
+
+                <div class="rules-grid">
+                    <!-- Regra 1 -->
+                    <div class="rule-box">
+                        <div class="rule-box-header">
+                            <span class="rule-number">01</span>
+                            <h3 class="rule-title">Duração da Partida</h3>
+                        </div>
+                        <p class="rule-desc">
+                            A luta dura exatamente <strong>2 minutos (120 segundos)</strong> ininterruptos. No Boxing de Atari, não existem 
+                            rounds separados, descansos no córner ou paralisações para contagem de quedas tradicionais no tablado.
+                        </p>
+                        <div class="rule-highlight">
+                            Ritmo frenético: o cronômetro do topo do ringue não perdoa distrações.
+                        </div>
+                    </div>
+
+                    <!-- Regra 2 -->
+                    <div class="rule-box">
+                        <div class="rule-box-header">
+                            <span class="rule-number">02</span>
+                            <h3 class="rule-title">Nocaute Técnico (KO)</h3>
+                        </div>
+                        <p class="rule-desc">
+                            Se qualquer um dos pugilistas atingir a impressionante marca de <strong>100 pontos</strong> antes do término 
+                            do tempo regulamentar, a partida é encerrada instantaneamente por nocaute automático.
+                        </p>
+                        <div class="rule-highlight">
+                            Atingir 100 pontos era o passaporte oficial para ingressar no cobiçado Activision Knockout Club!
+                        </div>
+                    </div>
+
+                    <!-- Regra 3 -->
+                    <div class="rule-box">
+                        <div class="rule-box-header">
+                            <span class="rule-number">03</span>
+                            <h3 class="rule-title">Decisão por Pontos</h3>
+                        </div>
+                        <p class="rule-desc">
+                            Caso os 2 minutos se esgotem sem que nenhum lutador atinja a pontuação centenária de nocaute, os juízes decidem 
+                            a partida: vence quem somar a maior pontuação. Se ambos terminarem empatados, o resultado é um Draw (Empate).
+                        </p>
+                        <div class="rule-highlight">
+                            A precisão e a disciplina tática valem ouro nos segundos finais da contagem.
+                        </div>
+                    </div>
+
+                    <!-- Regra 4 -->
+                    <div class="rule-box">
+                        <div class="rule-box-header">
+                            <span class="rule-number">04</span>
+                            <h3 class="rule-title">Tática das Cordas</h3>
+                        </div>
+                        <p class="rule-desc">
+                            Acertar um golpe faz com que o oponente seja empurrado para trás. Se ele for prensado contra as cordas do ringue, 
+                            seu recuo fica bloqueado, permitindo ao atacante emendar sequências rápidas e devastadoras ("juggling").
+                        </p>
+                        <div class="rule-highlight">
+                            Controlar o centro do ringue e forçar o rival contra as cordas é a tática dos campeões.
+                        </div>
+                    </div>
+
+                    <!-- Regra 5 -->
+                    <div class="rule-box">
+                        <div class="rule-box-header">
+                            <span class="rule-number">05</span>
+                            <h3 class="rule-title">Chaves de Dificuldade</h3>
+                        </div>
+                        <p class="rule-desc">
+                            As históricas chaves de dificuldade (Difficulty Switches) do console Atari 2600 permitiam balancear os combates: 
+                            a posição <strong>A</strong> tornava o boxeador mais lento (handicap para novatos), enquanto a posição <strong>B</strong> 
+                            mantinha a velocidade normal de competição.
+                        </p>
+                        <div class="rule-highlight">
+                            Um dos primeiros sistemas de acessibilidade e balanceamento da história dos jogos.
+                        </div>
+                    </div>
+
+                    <!-- Regra 6 -->
+                    <div class="rule-box">
+                        <div class="rule-box-header">
+                            <span class="rule-number">06</span>
+                            <h3 class="rule-title">Esquiva e Posicionamento</h3>
+                        </div>
+                        <p class="rule-desc">
+                            A perspectiva aérea permite circular livremente pelo tablado. Para conectar socos com sucesso, é necessário 
+                            alinhar a altura do seu punho com a cabeça do adversário enquanto mantém distância de segurança contra contra-ataques.
+                        </p>
+                        <div class="rule-highlight">
+                            O jogo de pernas (footwork) é tão decisivo quanto a velocidade dos próprios punhos.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabela de Tipos de Golpe e Pontos -->
+                <div class="scoring-table-container">
+                    <h3 class="table-title">🥊 Tabela Oficial de Golpes & Pontuação</h3>
+                    <table class="retro-table">
+                        <thead>
+                            <tr>
+                                <th>Tipo de Golpe</th>
+                                <th>Distância / Alcance</th>
+                                <th>Pontuação</th>
+                                <th>Efeito Tático no Adversário</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Jab Longo (À Distância)</strong></td>
+                                <td>Distância superior a 80 pixels</td>
+                                <td><span class="point-badge point-1">1 PONTO</span></td>
+                                <td>Mantém o oponente afastado, pontua com segurança e mede a distância do ringue.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Soco de Potência (Corpo a Corpo)</strong></td>
+                                <td>Distância crítica inferior a 80 pixels</td>
+                                <td><span class="point-badge point-2">2 PONTOS</span></td>
+                                <td>Alto impacto físico, empurrão vigoroso contra as cordas e acúmulo acelerado de pontos para KO.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nocaute Técnico (T.K.O.)</strong></td>
+                                <td>Acúmulo de 100 pontos</td>
+                                <td><span class="point-badge point-2">100 PONTOS</span></td>
+                                <td>Encerramento imediato do combate com vitória categórica e admissão ao Knockout Club.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SEÇÃO 3: INFORMAÇÕES HISTÓRICAS & LEGADO
+             ========================================================================== -->
+        <section class="history-section" id="historia">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">A REVOLUÇÃO DOS VIDEOGAMES EM 1980</span>
+                    <h2 class="section-title">Informações <span>Históricas</span></h2>
+                    <p class="section-desc">
+                        Conheça os bastidores da criação de Boxing, a fundação pioneira da Activision por ex-programadores da Atari 
+                        e as façanhas de engenharia necessárias para criar um jogo de luta em um hardware de apenas 128 bytes de RAM.
+                    </p>
+                </div>
+
+                <div class="history-timeline">
+                    <!-- Item 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">OUTUBRO DE 1979</div>
+                        <h3 class="timeline-title">A Rebelião dos Quatro Cavaleiros e o Nascimento da Activision</h3>
+                        <div class="timeline-body">
+                            <p>
+                                No final dos anos 1970, a Atari pertencia à gigante Warner Communications. Na época, a direção da Atari mantinha uma 
+                                rígida política corporativa: os criadores dos jogos não recebiam créditos nas embalagens nem royalties sobre as vendas 
+                                milionárias de seus cartuchos, sendo tratados como meros trabalhadores fabris anônimos.
+                            </p>
+                            <p>
+                                Revoltados com essa postura, os quatro programadores mais talentosos da empresa — <strong>David Crane, Larry Kaplan, 
+                                Alan Miller e Bob Whitehead</strong> (que sozinhos respondiam por mais da metade da receita da Atari) — abandonaram 
+                                a companhia. Liderados pelo experiente executivo da indústria fonográfica <strong>Jim Levy</strong>, fundaram em 
+                                1º de outubro de 1979 a <strong>Activision</strong>, a primeira desenvolvedora independente de videogames 
+                                (third-party) da história mundial.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">1980</div>
+                        <h3 class="timeline-title">Bob Whitehead e a Criação de Boxing (Cartucho AG-002)</h3>
+                        <div class="timeline-body">
+                            <p>
+                                <strong>Bob Whitehead</strong> já era uma lenda viva da programação. Na Atari, havia criado títulos consagrados como 
+                                <em>Blackjack</em> e <em>Home Run</em>. Ao estrear na Activision, Whitehead assumiu o desafio de criar os dois primeiros 
+                                jogos esportivos do catálogo independente: <em>Checkers</em> (Damas) e <strong>Boxing</strong>.
+                            </p>
+                            <p>
+                                Mais tarde, Bob Whitehead desenvolveria clássicos imortais como <em>Stampede</em> (1981) e <em>Chopper Command</em> (1982), 
+                                antes de co-fundar a prestigiada <strong>Accolade</strong> em 1984, onde produziu franquias como <em>HardBall!</em> e <em>Test Drive</em>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">A FAÇANHA DE ENGENHARIA</div>
+                        <h3 class="timeline-title">A Genialidade Técnica: 128 Bytes de RAM e Perspectiva Top-Down</h3>
+                        <div class="timeline-body">
+                            <p>
+                                Programar para o console <strong>Atari 2600 VCS</strong> era uma das tarefas mais exigentes da história da computação:
+                            </p>
+                            <div class="tech-specs-grid">
+                                <div class="tech-spec-item">
+                                    <div class="tech-spec-label">Processador</div>
+                                    <div class="tech-spec-value">MOS 6507 @ 1.19 MHz</div>
+                                </div>
+                                <div class="tech-spec-item">
+                                    <div class="tech-spec-label">Memória RAM Total</div>
+                                    <div class="tech-spec-value">128 Bytes (Chip RIOT)</div>
+                                </div>
+                                <div class="tech-spec-item">
+                                    <div class="tech-spec-label">Memória de Vídeo</div>
+                                    <div class="tech-spec-value">Zero Framebuffer (TIA)</div>
+                                </div>
+                                <div class="tech-spec-item">
+                                    <div class="tech-spec-label">ROM do Cartucho</div>
+                                    <div class="tech-spec-value">2 Kilobytes (2048 Bytes)</div>
+                                </div>
+                            </div>
+                            <p style="margin-top: 1rem;">
+                                Como o chip TIA (Television Interface Adaptor) permitia apenas 2 sprites de jogadores na tela e não havia memória de vídeo 
+                                para armazenar um quadro inteiro, os programadores precisavam atualizar os registradores a cada linha da TV de tubo 
+                                ("racing the beam"). 
+                            </p>
+                            <p>
+                                A grande sacada de Bob Whitehead foi adotar a <strong>perspectiva aérea (top-down view)</strong>. Em vez de tentar 
+                                desenhar boxeadores de lado — o que exigiria desenhar pernas, troncos e cabeças causando terríveis piscamentos 
+                                (flickering) —, a visão superior permitiu representar com perfeição os ombros móveis e a cabeça, viabilizando braços 
+                                articulados que desferem socos fluidos com física de impacto real.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box de Preservação e Manual Original -->
+                <div class="archive-box">
+                    <div class="archive-thumb">📖</div>
+                    <div class="archive-info">
+                        <h4>Manual de Instruções Original Preservado (1981)</h4>
+                        <p>
+                            Consulte a digitalização oficial do livreto de instruções da Activision preservado nos arquivos do Internet Archive 
+                            e da comunidade AtariAge. Inclui diagramas de época, dicas do designer Bob Whitehead e regulamento original.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="https://archive.org/details/Boxing_1981_Activision/page/n1/mode/2up" target="_blank" rel="noopener noreferrer" class="btn-archive">
+                            LER MANUAL NO ARCHIVE.ORG ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SEÇÃO 4: APRESENTAÇÃO DA NARRATIVA
+             ========================================================================== -->
+        <section class="narrative-section" id="narrativa">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">A ATMOSFERA DOS ANOS 80</span>
+                    <h2 class="section-title">Apresentação da <span>Narrativa</span></h2>
+                    <p class="section-desc">
+                        A imersão dramática no tablado dos campeões: a rivalidade clássica entre o Lutador Branco e o Lutador Preto 
+                        sob o calor implacável das lâmpadas e o clamor das multidões na Era de Ouro do Pugilismo.
+                    </p>
+                </div>
+
+                <div class="narrative-lead">
+                    "O cheiro de couro e resina corta o ar abafado do ginásio. Sob o brilho incandescente dos refletores, 
+                    dois gigantes silenciosos sobem os degraus de metal. Não há plateia para conselhos, não há segundos para toalhas. 
+                    Apenas cento e vinte segundos de pura coragem entre as quatro cordas."
+                </div>
+
+                <div class="narrative-cards-grid">
+                    <!-- Card Narrativo 1 -->
+                    <div class="narrative-card">
+                        <h3>🥊 O Duelo no Tablado Quadrado</h3>
+                        <p>
+                            O ringue de Atari Boxing é o cenário mais puro e despido da história dos esportes virtuais. Desprovido de distrações 
+                            ou efeitos pirotécnicos, o foco absoluto recai sobre a dança hipnótica dos dois pugilistas: 
+                            o <strong>Lutador de Branco</strong>, consagrado pela velocidade de esquiva e precisão cirúrgica de seus jabs, contra o 
+                            <strong>Lutador de Preto</strong>, uma força incansável que marcha para frente em busca do golpe de nocaute.
+                        </p>
+                        <p>
+                            Cada passo pelo tablado verde é um teste de bravura. O espaço é limitado pelas quatro cordas elásticas: recuar 
+                            demais significa ser encurralado; avançar sem cautela abre a guarda para o contra-ataque.
+                        </p>
+                    </div>
+
+                    <!-- Card Narrativo 2 -->
+                    <div class="narrative-card">
+                        <h3>⏱️ A Guerra dos 120 Segundos Sem Trégua</h3>
+                        <p>
+                            Diferente das lutas tradicionais com assaltos espaçados por descansos revigorantes e goles d'água no córner, 
+                            em *Boxing* a contagem é ininterrupta. São 2 minutos onde cada piscar de olhos define o destino da luta.
+                        </p>
+                        <p>
+                            A fadiga mental é implacável. Os boxeadores trocam golpes em alta velocidade: o estalar dos jabs à distância 
+                            soma os primeiros pontos, enquanto o choque pesado no corpo a corpo estremece as cordas. 
+                            Quando o gongo final soa, apenas um sairá com os braços erguidos pelos juízes.
+                        </p>
+                    </div>
+
+                    <!-- Card Narrativo 3 -->
+                    <div class="narrative-card">
+                        <h3>🌟 O Mito dos 100 Pontos: A Glória Eterna</h3>
+                        <p>
+                            No imaginário dos jogadores da década de 1980, alcançar os 100 pontos não era apenas uma vitória técnica: 
+                            era um feito sobre-humano. Significava desferir dezenas de golpes precisos, encurralar o adversário nas cordas 
+                            sem sofrer retaliações e quebrar a barreira do placar eletrônico.
+                        </p>
+                        <p>
+                            O nocaute aos 100 pontos representava o ápice da maestria com o joystick nas mãos, consagrando o jogador 
+                            como um verdadeiro campeão mundial dos ringues de 8-bits.
+                        </p>
+                    </div>
+
+                    <!-- Card Narrativo 4 -->
+                    <div class="narrative-card">
+                        <h3>📼 Nostalgia da Era de Ouro do Boxe</h3>
+                        <p>
+                            Lançado no auge de embates históricos do boxe mundial — a época de Muhammad Ali, Sugar Ray Leonard e Roberto Durán —, 
+                            *Boxing* capturou como nenhum outro jogo de sua época a essência do combate mano a mano.
+                        </p>
+                        <p>
+                            Com gráficos minimalistas e som percussivo sintetizado no próprio hardware da TV, o jogo transformou salas de estar 
+                            em arenas apinhadas onde amizades eram testadas em disputas eletrizantes no mesmo sofá.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SEÇÃO 5: O ACTIVISION KNOCKOUT CLUB
+             ========================================================================== -->
+        <section class="knockout-club-section" id="knockout-club">
+            <div class="section-container">
+                <div class="patch-showcase">
+                    <div class="patch-emblem">★ ACTIVISION KNOCKOUT CLUB ★</div>
+                    <h2 class="patch-title">O Lendário Emblema dos Campeões</h2>
+                    <p class="patch-desc">
+                        Na década de 1980, a Activision mantinha um clube de conquistas exclusivo para os mestres de seus jogos. 
+                        Quem conseguisse um nocaute (100 pontos) no Atari 2600 podia tirar uma fotografia da tela da TV (usando câmera Polaroid 
+                        ou filme 35mm) e enviar uma carta para a sede da empresa na Califórnia:
+                    </p>
+
+                    <div class="patch-address-box">
+                        Activision Knockout Club<br>
+                        Drawer No. 7287, Mountain View, CA 94042<br>
+                        Sunnyvale, California - USA
+                    </div>
+
+                    <p class="patch-desc" style="margin-top: 1.5rem;">
+                        Pelo correio, os bravos pugilistas recebiam um distintivo de pano bordado oficial para costurar na jaqueta ou mochila, 
+                        acompanhado de um certificado de honra assinado pessoalmente pelo designer <strong>Bob Whitehead</strong>!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SEÇÃO 6 (FINAL): A ARENA DO JOGO (CANVAS)
+             ========================================================================== -->
+        <section class="arena-section" id="arena">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">COMBATE EM TEMPO REAL</span>
+                    <h2 class="section-title">A Arena do <span>Tablado Quadrado</span></h2>
+                    <p class="section-desc">
+                        O jogo original desenvolvido através do elemento Canvas. Controle os pugilistas com o teclado, 
+                        esquive-se pelo tablado, encurrale nas cordas e busque o nocaute técnico lendário!
+                    </p>
+                </div>
+
+                <!-- Gabinete Arcade que Envolve o Canvas -->
+                <div class="arcade-cabinet">
+                    <div class="cabinet-marquee">
+                        <div class="marquee-left">
+                            <span class="marquee-led"></span>
+                            <span class="marquee-title">ACTIVISION ARCADE ARENA</span>
+                        </div>
+                        <div class="marquee-right">
+                            <span class="marquee-status">TELA 960x630 • CANVAS 2D ATIVO</span>
+                        </div>
+                    </div>
+
+                    <!-- Moldura CRT -->
+                    <div class="arcade-screen-frame crt-scanlines" id="arcade-screen">
+                        <div class="canvas-wrapper">
+                            <!-- Elemento Canvas Original do Jogo -->
+                            <canvas id="gameCanvas" width="960" height="630"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Barra de Ferramentas do Gabinete -->
+                    <div class="cabinet-toolbar">
+                        <div class="toolbar-buttons">
+                            <button type="button" class="arcade-btn btn-reset" onclick="location.reload();">
+                                🔄 Reiniciar Luta
+                            </button>
+                            <button type="button" class="arcade-btn" id="btn-toggle-crt">
+                                📺 Alternar CRT Scanlines
+                            </button>
+                            <button type="button" class="arcade-btn" onclick="document.getElementById('gameCanvas').scrollIntoView({behavior: 'smooth', block: 'center'});">
+                                🎯 Centralizar Ringue
+                            </button>
+                        </div>
+                        <div class="cabinet-tip">
+                            💡 <strong>Dica:</strong> Clique dentro do ringue para garantir o foco do teclado!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cards Rápidos de Apoio aos Controles -->
+                <div class="quick-controls-bar">
+                    <div class="player-quick-card p1">
+                        <div class="player-avatar">P1</div>
+                        <div class="player-quick-info">
+                            <h4>Jogador 1 (Corner Branco)</h4>
+                            <p><strong>Movimentação:</strong> Teclas [W] [A] [S] [D] &nbsp;|&nbsp; <strong>Soco:</strong> [Barra de Espaço]</p>
+                        </div>
+                    </div>
+                    <div class="player-quick-card p2">
+                        <div class="player-avatar">P2</div>
+                        <div class="player-quick-info">
+                            <h4>Jogador 2 (Corner Preto)</h4>
+                            <p><strong>Movimentação:</strong> [Setas Direcionais] &nbsp;|&nbsp; <strong>Soco:</strong> [Tecla Enter]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+         RODAPÉ (FOOTER)
+         ========================================================================== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ATARI BOXING (1980) - ATIVIDADE AVALIATIVA</h3>
+                <p>
+                    Projeto desenvolvido para a disciplina de <strong>Desenvolvimento de Jogos WEB</strong>. 
+                    Recriação do clássico <em>Boxing</em> lançado pela Activision para o console Atari 2600 em 1980. 
+                    Desenvolvido com elementos nativos HTML5 Canvas, JavaScript orientado a objetos e design responsivo.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navegação</h4>
+                <ul class="footer-links">
+                    <li><a href="#controles">🕹️ Controles de Teclado</a></li>
+                    <li><a href="#jogabilidade">📋 Regras de Pontuação</a></li>
+                    <li><a href="#historia">🏛️ Bob Whitehead & Atari</a></li>
+                    <li><a href="#narrativa">📖 Narrativa do Ringue</a></li>
+                    <li><a href="#arena">🥊 A Arena do Jogo</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Documentação</h4>
+                <ul class="footer-links">
+                    <li><a href="https://archive.org/details/Boxing_1981_Activision/page/n1/mode/2up" target="_blank" rel="noopener noreferrer">Internet Archive Manual ↗</a></li>
+                    <li><a href="https://atariage.com" target="_blank" rel="noopener noreferrer">AtariAge Database ↗</a></li>
+                    <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">Repositório GitHub ↗</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>© 1980 Activision, Inc. • Homenagem Acadêmica ao Clássico de Bob Whitehead</div>
+            <div>Desenvolvimento de Jogos WEB</div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         SCRIPTS DO JOGO ORIGINAL
+         ========================================================================== -->
+    <script>
+        // Previne erro de referência não declarada na função gameOver() original
+        window.gameOverSound = {
+            play: function() {
+                try {
+                    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                    if (AudioCtx) {
+                        const ctx = new AudioCtx();
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sawtooth';
+                        osc.frequency.setValueAtTime(130, ctx.currentTime);
+                        osc.frequency.exponentialRampToValueAtTime(45, ctx.currentTime + 0.9);
+                        gain.gain.setValueAtTime(0.3, ctx.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.9);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start();
+                        osc.stop(ctx.currentTime + 0.9);
+                    }
+                } catch(e) {
+                    console.log("Fim do Round!");
+                }
+            }
+        };
+
+        // Alternância do efeito visual CRT Scanlines
+        document.getElementById('btn-toggle-crt').addEventListener('click', function() {
+            var screen = document.getElementById('arcade-screen');
+            if (screen) {
+                screen.classList.toggle('crt-scanlines');
+            }
+        });
+    </script>
+
+    <script src="scripts/classes.js"></script>
+    <script src="scripts/game.js"></script>
+
+</body>
+</html>
